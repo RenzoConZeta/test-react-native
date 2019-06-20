@@ -1,53 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import AuthLoadingScreen from './screens/AuthLoadingScreen';
+import HomeScreen from './screens/HomeScreen';
+import SignInScreen from './screens/SignInScreen';
 
-import { Button } from 'react-native-material-ui';
+const AppStack = createStackNavigator({ Home: HomeScreen });
+const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+export default createAppContainer(createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingScreen,
+        App: AppStack,
+        Auth: AuthStack,
+    },
+    {
+        initialRouteName: 'AuthLoading',
+    }
+));
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Button raised primary text="Primary" />
-        <Button primary text="Primary" />
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

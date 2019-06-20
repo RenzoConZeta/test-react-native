@@ -10,12 +10,12 @@ import {
 import {
     MKColor,
     MKTextField,
-} from 'react-native-material-kit';;
+} from 'react-native-material-kit';
 
 class SignInScreen extends React.Component {
     static navigationOptions = {
         headerStyle: {
-            backgroundColor: 'transparent',
+            backgroundColor: '#ff0',
         },
     };
 
@@ -59,15 +59,10 @@ class SignInScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        height: '75%',
-        display: 'flex',
+        flex:1,
         flexDirection: 'column',
-        // paddingTop: '50%',
         justifyContent: 'center',
         margin: 30,
-        // alignItems: 'center',
-        // backgroundColor: 'transparent',
     },
     welcome: {
         fontSize: 20,

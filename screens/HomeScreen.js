@@ -1,32 +1,33 @@
 import React from 'react';
+import { Button, Text, View } from 'react-native';
 import {
-    AsyncStorage,
-    View,
-    Button,
-} from 'react-native';
+    MKColor,
+} from 'react-native-material-kit';
+
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
-        title: 'Welcome to the app!',
+        title: 'Evaluador',
+        headerStyle: {
+            backgroundColor: MKColor.Teal,
+        },
+        headerTintColor: '#fff',
     };
-
     render() {
         return (
-            <View>
-                <Button title="Show me more of the app" onPress={this._showMoreApp} />
-                <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>Home!</Text>
+                <Button
+                    title="Deslogueo"
+                    onPress={() => this.props.navigation.navigate('Auth')}
+                />
+                <Button
+                    title="Go to Details"
+                    onPress={() => this.props.navigation.navigate('Details')}
+                />
             </View>
         );
     }
-
-    // _showMoreApp = () => {
-    //     this.props.navigation.navigate('Other');
-    // };
-
-    _signOutAsync = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('Auth');
-    };
 }
 
 export default HomeScreen;
